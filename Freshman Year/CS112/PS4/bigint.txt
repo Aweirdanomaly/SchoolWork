@@ -1,0 +1,237 @@
+/* 
+ * BigInt.java
+ *
+ * A class for objects that represent non-negative integers of 
+ * up to 20 digits.
+ */
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
+public class BigInt {
+
+
+
+    // the maximum number of digits in a BigInt -- and thus the length
+    // of the digits array
+    private static final int SIZE = 20;
+
+    // the array of digits for this BigInt object
+    private int[] digits;
+
+    // the number of significant digits in this BigInt object
+    private int numSigDigits;
+
+    /*
+     * Default, no-argument constructor -- creates a BigInt that
+     * represents the number 0.
+     */
+    public BigInt() {
+        this.digits = new int[SIZE];
+        this.numSigDigits = 1;  // 0 has one sig. digit--the rightmost 0!
+    }
+
+    /*
+    BigInt- Extra constructor that converts an array into a BigInt
+     */
+    public BigInt(int[] arr) {
+        checkArray(arr);
+        makeArr(arr);
+        makenumSigDigits(arr);
+    }
+
+    public BigInt(int n){
+        if (n < 0){
+            throw new IllegalArgumentException("the integer is negative");
+        }
+        int[] a = new int[2];
+        int[] arr = IntToArray(n);
+        checkArray(arr);
+        makeArr(arr);
+        makenumSigDigits(arr);
+    }
+
+    /*
+    checkArray - throws an exception if array size is null or not between 0 and 20
+     */
+    private void checkArray(int[] arr) {
+        if (SIZE < arr.length || 0 > arr.length || arr == null) {
+            throw new IllegalArgumentException("the length of the array is not between 0 and 20");
+        }
+        for (int i = 0; i < arr.length; i++){
+            if (0 > arr[i] || 9 < arr[i]){
+                throw new IllegalArgumentException("digit in array is not between 0 and 9");
+            }
+        }
+    }
+    /*
+    makeArr - makes array into a BigInt array
+     */
+    private void makeArr(int[] arr){
+        int dif = SIZE - arr.length;
+        digits = new int[SIZE];
+
+        for (int i = 0; i < dif; i++) {
+            digits[i] = 0;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            digits[dif + i] = arr[i];
+        }
+    }
+    /*
+    IntToArray - turns any int into an array
+     */
+    private int[] IntToArray(int n){
+        int[] ar = new int [20];
+        for (int i = ar.length; i > 0 ; i--) {
+            ar[i-1] = (n % 10);
+            n /= 10;
+            if (n <= 0){
+                break;
+            }
+        }
+        return ar;
+    }
+    private void makenumSigDigits(int[] arr){
+
+        for (int i = 0; i < arr.length; i++){
+            if (arr[i] != 0){
+                numSigDigits = arr.length - i ;
+                break;
+            }
+
+        }
+
+    }
+
+    /*
+    getNumSigDigits - accessor method that returns numSigDigits of object
+     */
+    public int getNumSigDigits() {
+        return numSigDigits;
+    }
+
+    /*
+    toString - returns a String representation of the BigInt object
+    */
+    public String toString() {
+        String res = "";
+        for (int i = (digits.length - numSigDigits); i < digits.length; i++) {
+                res = res + Integer.toString(digits[i]);
+        }
+        if (res == "") {
+            res = "0";
+        }
+        return res;
+
+
+    }
+    /*
+    compareTo - takes in two BigInts and returns -1, 0, or 1 depending on which is
+    bigger
+     */
+    public int compareTo(BigInt other){
+        int res = 0;
+        for (int i = 0; i < other.digits.length; i++){
+            if (this.digits[i] > other.digits[i]){
+                res = 1;
+                break;
+            }
+            if (this.digits[i] < other.digits[i]){
+                res = -1;
+                break;
+            }
+        }
+        return res;
+    }
+    /*
+    add - create and return a new BigInt object for the sum of
+    the integers represented by the called object and other
+     */
+    public BigInt add(BigInt other){
+        if (other == null || this == null){
+            throw new IllegalArgumentException("At least one of the inputs is null");
+        }
+        int presum;
+        int[] sum = new int[SIZE];
+        int carry = 0;
+        for (int i = SIZE - 1; i >= 0; i--){
+            presum = this.digits[i] + other.digits[i]+ carry;
+            if (presum > 9){
+                sum[i] = (presum % 10);
+                carry = presum / 10;
+            }
+            else{
+                sum[i] = presum;
+                carry = 0;
+            }
+        }
+        if (carry != 0){
+            throw new ArithmeticException("values add up to over 20 digits");
+        }
+
+        BigInt res = new BigInt(sum);
+
+        return res;
+    }
+    /*
+    checkZero- checks if a BigInt object represents zero and returns a boolean
+     */
+    private boolean checkZero(BigInt a){
+        boolean res = false;
+        for (int i = 0; i < a.digits.length; i++){
+            if (a.digits[i] != 0){
+                res = true;
+            }
+        }
+        return res;
+    }
+
+    /*
+    mul- takes in two BigInt objects and multiplies them
+     */
+
+    /*
+    public BigInt mul(BigInt other){
+        if (other == null || this == null){
+            throw new IllegalArgumentException("At least one of the inputs is null");
+        }
+
+        if (checkZero(other)){
+            BigInt Zero  = new BigInt(0);
+            return Zero;
+        }
+        if
+
+        /*
+        BigInt presum = new BigInt(0);
+        BigInt total = new BigInt(0);
+
+
+
+
+        for (int i = (SIZE) - 1; i >= 0; i--){
+
+            for (int x = (SIZE) - 1; x >= 0; x--) {
+                BigInt bottom = new BigInt(other.digits[x]);
+                int dif = (SIZE-1) - x;
+
+                System.out.println("bottom:" + bottom);
+                for (int y = 0; y < this.digits[i]; y++) {
+                    total = total.add(bottom);
+                    System.out.println("total:" + total);
+                }
+                }
+            }
+
+            if (product[i] != 0) {
+                throw new ArithmeticException("result has over 20 digits");
+            }
+
+
+
+
+
+        return total;
+    }
+    */

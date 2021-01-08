@@ -1,0 +1,14 @@
+a.) Guess has two fields:  int "row" and int "column"
+
+The client can access these through the getRow() and getColumn() 
+
+
+b.) This will not be possible since there are no mutator methods in the Guess file. If we were to create mutator methods, then yes,  it would be possible for a client to change the values of the fields.
+
+c.) These fields would be int "dimension," int[][] "status," Ship[][] "shipAt," and int "shipsRemaining." Dimension represents the dimension of the board, and hence the possible places the ship can be in. Status gives us the state of each position on the board. ShipAt gives us the ship (if any) located at each position. Finally, shipsremaining gives us the number of unsunk ships.
+
+d.)
+
+b.hasBeenTried(r,c)
+
+The boolean value (true or false) returned by this method call will refer to whether the spot in the board has been guessed before or not. It will return true if it has been guessed and false if it hasn't.

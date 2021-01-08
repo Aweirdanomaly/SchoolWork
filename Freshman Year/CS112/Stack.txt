@@ -1,0 +1,35 @@
+
+Stack:
+
+
+import java.util.*; 
+  
+public class StackDemo { 
+    public static void main(String args[]) 
+    { 
+  
+        // Creating an empty Stack 
+        Stack<Integer> stack = new Stack<Integer>(); 
+  
+        // Use add() method to add elements in the Stack 
+        stack.push(10); 
+        stack.push(20); 
+        stack.push(30); 
+        stack.push(40); 
+        stack.push(50); 
+  
+        // Output the Stack 
+        System.out.println("Stack: " + stack); 
+  
+        // Remove the element using remove() 
+        int rem_ele = stack.pop(); 
+  
+        // Print the removed element 
+        System.out.println("Removed element: "
+                           + rem_ele); 
+  
+        // Print the final Stack 
+        System.out.println("Final Stack: "
+                           + stack); 
+    } 
+} 

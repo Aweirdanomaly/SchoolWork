@@ -1,0 +1,28 @@
+mystery([7, -2, -8, 10])
+------------------------
+    values = [7, -2, -8, 10]
+    myst_rest = mystery([-2, -8, 10]) = [10, -8, -2]
+    return [7, 10, -8, -2]
+
+    mystery([-2, -8, 10])
+    ---------------------
+        values = [-2, -8, 10]
+        myst_rest = mystery([-8, 10]) = [10, -8]
+        return [10, -8, -2]
+
+        mystery([-8, 10])
+        ---------------------
+            values = [-8, 10]
+            myst_rest = mystery([10]) = [10]
+            return [10, -8]
+
+	    mystery([10])
+            ---------------------
+          	  values = [10]
+          	  myst_rest = mystery([]) =[]
+            	  return [10]
+
+		  mystery([])
+                  ---------------------
+          		  values = []
+            		  return []

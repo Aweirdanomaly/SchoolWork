@@ -1,0 +1,93 @@
+ 
+
+
+2.4
+/////////////////////////////////////////////////////////////////////////////////////
+
+ ||AB X AC||                 AB= (bi-ai,bj-aj,bk-ak)   and ||W||=sqrt(wi^2+wj^2+wk^2)
+--------------
+   ||BC||
+/////////////////////////////////////////////////////////////////////////////////////
+
+2.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Symmetric Equatiion of a line:
+
+x-x_0  =  y-y_0  = z-z_0          where: direction vector = <a,b,c> and
+-----     ------   -----          some point in line = <x_0, y_0, z_0>
+  a          b       c
+
+Parametric equation of a line:
+
+x=x_0 + ta
+y=y_0 + tb
+z=z_0 + tc
+
+
+
+Scalar equation of a plane:
+
+a(x-x_0) + b(y-y0) + c(z-z_0) = 0
+
+General Form equation of a plane:
+
+ax + by + cz + d = 0                 where d = -ax_0 -by_0 - cz_0 (a.k.a. some remainder shit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+3.2
+=====================================================================================
+Unit Tangent vector (T)
+
+T(t)=r'(t)
+     -----
+    ||r'(t)||
+
+
+======================================================================================
+
+3.3
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+Curvature 2-D
+
+Kappa=T'(t)
+      -----
+    ||r'(t)||
+
+
+
+Curvature 3-D
+
+Kappa=||r'(t) X r''(t)||
+     ------------------
+         ||r'(t)||
+
+
+Arc Length 
+      ⌠t							⌠t   _____________
+s(t)= |  ||r'(u)||du             where if r(u)= sin(u),cos(u)   | \/sinu^2+cosu^2du
+      ⌡a 			 then r'(u)=cos(u),-sin(u)      ⌡a
+      
+
+Unit Normal Vector (N) (vector perpendicular to function[pointing towards curve bend])
+
+N(t)= T'(t)
+      -----
+    ||T'(t)||
+
+Unit Binormal Vector (B) (vector perpendicular to N and T)
+
+B(t) = N(t) X T(t)
+
+
+
+
+
+oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
+
+Idea:
+
+To find global minimum Integrate (lots of definite integrals?) over all function and find which value gives you either smallest or all negative
+
+

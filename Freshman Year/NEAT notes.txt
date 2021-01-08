@@ -1,0 +1,73 @@
+touhou Neat
+
+Input - Crap.... try to Opencv screen 
+
+
+above, below, left, and right, shoot and bomb
+
+
+
+
+Output=up?left?right?down?shoot?bomb?
+
+
+
+
+Identification/Innovation Number: Connection's ID
+
+Genome: List of all Connections and INs
+Gene: Box with connection and IN
+
+
+Crossing Over:two parents fuck and have offspring with combined genome
+-----For each gene if both parents have the same gene, gene gets passed down, else if one of them is missing one, the one not missing gets passed down, else if different genes, flip coin
+
+1    2          4             7           
+1-2  2-3        4-5          7-8
+--------------------------------------------
+1    2     3                  7      8     9
+1-2  2-3  3-4                7-8    8-9   9-10             
+               
+          Disjoint     ???           Excess    
+
+Mutations: 
+mutate_link=adds new link with random weight from -2 to 2
+mutate_node=adds new node (& take away old connection and make 2 new connections (one with prev weight the other with weight of 1)
+mutate_enable_disable: randomly choose some connections to flip boolean of disabled or enabled
+mutate_weight_shift: multiply weight by random number and shift to top or bottom
+mutate_weight_random: Just choose new random weight
+[Weight and IN are in connections]
+
+
+Selection(choosing the winner):
+
+Speciating: 
+1- Pick winner based on score and make a species for it
+2- One at a time, compare all the other participant's "distance" between their genomes. If their distance is below a threshold, add them to that species.
+3- If "distance" too high, compare with any other species you've made, if distance too great from each of them, make new species, else add them.
+4-Sort each species based on score
+5- Kill the bottom 50% of each species.----or...do below---------le note
+
+
+
+
+for each species, grab every individual's fitness score and divide each score by the total number of people in that species. (this is "f_(ij)")
+
+Then add up all new scores for every species (maybe could just grab one score per species and multiply by amount of individuals in that species then add all these totals up) and divide by how many total individuals there are. (this is N'_(j))
+
+Then the best r% of each species randomly fucks to make N'_j offspring
+
+
+"distance" delta
+How is genomic distance measured?
+It uses a combination of the number of non-homologous nodes and connections with measures of how much homologous nodes and connections have diverged since their common origin. (Non-homologous nodes and connections are termed disjoint or excess, depending on whether the numbers are from the same range or beyond that range; like most NEAT implementations, this one makes no distinction between the two.)
+
+delta= (c_1E/N)+(c_2D/N)+c_3W      
+E=excess genes 
+D=disjoint jeans 
+W= average weight differences of matching genes
+N=number of genes in the larger genome (used for normalization)
+where c_1 c_2 c_3 is how important you want each thing to be
+ 
+
+

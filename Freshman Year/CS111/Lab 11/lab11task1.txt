@@ -1,0 +1,13 @@
+1- q0
+
+2- q2, q4, q6, and q7
+
+3- 2, yes
+
+4- q3
+
+5-rejected: 0, 111, 0100 accepted: 10, 010, 101010
+
+6- Any bit string containing the pattern 10 and not consecutive equal values (e.g. 11 or 00)
+
+7- Yes, you can get rid of two finishing states

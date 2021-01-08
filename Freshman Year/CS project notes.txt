@@ -1,0 +1,18 @@
+Framework
+	Get a design pattern
+
+	Code organized
+
+	MVC (Model View Controller)
+
+	make the UI look cool (get a bootstrap template and use it)
+
+	Must have a database
+
+	Has authentication/log in (naahhh, too specific)
+
+	Solves a problem (preferrably a business problem)
+
+Project:
+	Bugtracker
+(lol can call it different names "help desk ticket system" "delivery notification system" "field force automation")

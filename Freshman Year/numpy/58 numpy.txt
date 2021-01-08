@@ -1,0 +1,11 @@
+				Numpy notes on 
+		"Complete Python NumPy Tutorial (Creating Arrays, Indexing, Math, Statistics, Reshaping)"
+
+https://github.com/KeithGalli/NumPy/blob/master/NumPy%20Tutorial.ipynb
+
+
+
+
+# Random decimal numbers
+np.random.rand(4,2)
+np.random.random_sample(a.shape)

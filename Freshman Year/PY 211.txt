@@ -1,0 +1,77 @@
+						PY211
+
+
+Dot Products:
+
+A.B = ABcos(theta) 
+
+Displacement = distance from origin
+Distance= Distance traveled
+
+
+
+
+Derivation of formula bois:
+
+  Aavg = _Vf__-__Vi
+          Tf  -  Ti
+
+
+  Aavg = _Vf__-__Vi              Hence, Vf = Vi + Aavg(t) 
+             t
+
+
+Vavg = _Xf__-__Xi_ 
+            t       						Also, v = v0 + at
+
+Vav
+
+
+
+
+							Hence, x = x0 + v0t + .5at^2
+
+							Bonus, V^2 = V0^2 + 2ax
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          

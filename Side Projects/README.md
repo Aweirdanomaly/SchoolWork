@@ -1,0 +1,2 @@
+# Project Description
+This project aimed to beat the "Stack" game (https://play.google.com/store/apps/details?id=com.ketchapp.stack&hl=en_US&gl=US) from the Play Store through the use of the Android Debug Bridge. The above project is written in Python. It works by keeping track of a pixel in the middle of the screen that the block passes over when it's in the right position. Whenever the program detects this pixel changes color (i.e. the block is at that spot), the screen is tapped and the block is placed.

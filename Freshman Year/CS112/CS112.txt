@@ -1,0 +1,74 @@
+				CS112 Notes
+
+
+
+
+import java.util.*;  ----------------imports input library <wack ass>
+
+Scanner var = new Scanner(System.in); -------------- get keyboard input
+var.next(); -----------actually gets input
+
+"Static bois are local to the class" So scope of class 
+
+Casting allows for system to mathematically treat a variable like the variable that is casted
+
+A.K.A.
+
+cents = 52
+
+cents / 100  ----------int division
+(double) / 100 ------------regular division
+
+
+
+
+Static-------- class variables (variables declare in class, not in method) 
+
+Stack --------all variable bois "local variables, parameters"
+
+Heap ---------the actual objects
+
+lol = "ayy, lmao" -------------gets its own special place in the heap called "Consant String Pool"
+
+
+
+String slicing doesn't exist in Java, must use methods (plz look them up and put them here) (nol lah, I'll memorize them)
+
+
+type[] ------------------------make array boi
+
+Use  .equals() when comparing two objects.
+
+
+
+constructors----------initialize objects
+
+mutators--------------modify the objects data
+
+accesors--------------retrieve object's data
+
+
+when printing objects, Java will call the ".toSting()" method.
+
+Java object is the root class from which everything stems.
+
+
+
+
+			Sorts, Big-Os and Shit
+
+
+
+
+
+Selection Sort: Scan through and find smallest from scanned
+
+
+
+Insertion Sort: 
+Start at i = 1
+copy element to variable
+if element smaller than sorted, shift sorted element to right
+
+
+
