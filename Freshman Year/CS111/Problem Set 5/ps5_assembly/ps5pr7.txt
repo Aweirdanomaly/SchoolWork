@@ -1,0 +1,24 @@
+#
+# ps5pr7.txt (Problem Set 5, Problem 7)
+#
+# Summing multiples by looping
+#
+# If you worked with a partner, put his or her contact info below:
+# partner's name:
+# partner's email:
+#
+
+00   read r1           # get first number from user and store it in r1
+01   read r2           # get second number from user and store it in r2
+02   copy r5 r2        # copy second number from user and store it in r5
+03   copy r4 r1        # copy first number from user and store it in r4
+04   addn r4 -1        # subtract 1 from r4
+05   setn r6 0         # set r6 to 0
+06   jeqzn r4 11       # if r4 == 0, jump to line 11
+07   add r5 r2 r5      # add r2 and r5 and store the result in r5
+08   add r6 r5 r6      # add r5 and r6 and store the result in r6
+09   addn r4 -1        # subtract 1 from r4
+10   jumpn 06          # jump to line 06
+11   add r6 r6 r2      # add r6 and r2 and store the result in r6
+12   write r6          # write out the result of r6
+13   halt

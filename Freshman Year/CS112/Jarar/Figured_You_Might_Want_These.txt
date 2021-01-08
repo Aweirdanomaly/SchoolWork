@@ -1,0 +1,360 @@
+
+
+
+
+
+					Number 5
+
+					ArrayList Version
+
+void reverse(){
+        int first = 0;
+        int last = this.length-1;
+        Object hold = null;
+        while (first < last){
+            hold = this.items[first];
+            this.items[first] = this.items[last];
+            this.items[last] = hold;
+            first+=1;
+            last-=1;
+        }
+
+					LLList Version
+
+void reverse(){
+        Node current = this.head.next;
+        Node forward = null;
+        Node back = null;
+        while (current != null){
+
+            forward = current;
+            current = current.next;
+
+            forward.next = back;
+            back = forward;
+            head.next = forward;
+
+
+        }
+
+					Number 6
+
+/*
+ * ArrayBag.java
+ *
+ * Computer Science 112, Boston University
+ */
+
+import java.util.*;
+
+/*
+ * An implementation of a bag data structure using an array.
+ */
+public class LLBag implements Bag {
+    /*
+     * The list used to store the items in the bag.
+     */
+    private LLList items;
+
+    /*
+     * The number of items in the bag.
+     */
+    private int numItems;
+
+    private Node head;
+
+
+    /*
+     * Constructor with no parameters - creates a new, empty LLBag
+     */
+    public LLBag() {
+        items = new LLList();
+        numItems = 0;
+        head = new Node(null, null);
+    }
+
+
+
+    /*        Unnecessary cuz max size is infinite(ish)
+     * A constructor that creates a new, empty LLBag with the specified
+     * maximum size.
+
+    public LLBag(int maxSize) {
+
+        items = new Object[maxSize];
+        numItems = length;
+    }
+    */
+
+    private class Node {
+        private Object item;
+        private Node next;
+
+        private Node(Object i, Node n) {
+            item = i;
+            next = n;
+        }
+    }
+
+
+
+
+
+
+
+
+
+    /*
+     * numItems - accessor method that returns the number of items
+     * in this LLBag.
+     */
+    public int numItems() {
+        return numItems;
+    }
+
+    /*
+     * add - adds the specified item to this LLBag. Returns true if there
+     * is room to add it, and false otherwise.
+     * Throws an IllegalArgumentException if the item is null.
+     */
+    public boolean add(Object item) {
+        if (item == null) {
+            throw new IllegalArgumentException("item must be non-null");
+        }  else {
+
+            if (this.numItems == 0){
+
+                Node newOne = new Node(item, null);
+                head = newOne;
+                numItems ++;
+            }
+            else {
+
+
+                Node newOne = new Node(item, head);
+                numItems++;
+                head = newOne;
+
+            }
+
+        }
+        return true;
+    }
+
+    /*
+     * remove - removes one occurrence of the specified item (if any)
+     * from this ArrayBag.  Returns true on success and false if the
+     * specified item (i.e., an object equal to item) is not in this ArrayBag.
+     */
+    public boolean remove(Object item) {
+       if (this.contains(item)==true){
+           if (head.item == item){
+               head = head.next;
+               numItems--;
+               return true;
+           }
+           Node current = head;
+           while (current.next != null){
+               if (current.next.item.equals(item)) {
+
+                   current.next = current.next.next;
+                   numItems--;
+                   return true;
+               }
+               current=current.next;
+           }
+       }
+
+           return false;  // item not found
+    }
+
+    /*
+     * contains - returns true if the specified item is in the Bag, and
+     * false otherwise.
+     */
+    public boolean contains(Object item) {
+        Node current = head;
+        while(current != null) {
+            if (current.item.equals(item)) {
+                return true;
+            }
+            current = current.next;
+        }
+
+        return false;
+    }
+
+    /*
+     * grab - returns a reference to a randomly chosen item in this LLBag.
+     */
+    public Object grab() {
+        if (numItems == 0) {
+            throw new IllegalStateException("the bag is empty");
+        }
+
+        int whichOne = (int)(Math.random() * numItems);
+        int count = 0;
+        Node trav = head;
+        while (count < whichOne){
+            trav = trav.next;
+            count++;
+        }
+        return trav.item;
+    }
+
+    /*
+     * toArray - return an array containing the current contents of the bag
+     */
+    public Object[] toArray() {
+        Object[] copy = new Object[numItems];
+        Node trav = head;
+        for (int i = 0; i < numItems; i++) {
+            copy[i] = trav.item;
+            trav = trav.next;
+        }
+
+        return copy;
+    }
+
+    /*
+     * toString - converts this ArrayBag into a string that can be printed.
+     * Overrides the version of this method inherited from the Object class.
+     */
+    /*
+     * toString - converts this ArrayBag into a string that can be printed.
+     * Overrides the version of this method inherited from the Object class.
+     */
+
+    public String toString(){
+
+        String str = "{";
+
+        // node to traverse
+        Node trav = head;
+
+        while (trav != null){
+            // accumulate the string
+            str += trav.item;
+
+            // advance to next node
+            trav = trav.next;
+
+            str += ", ";
+
+        }
+        str = str.substring(0,str.length()-2);
+
+        str += "}";
+        return str;
+
+    }
+
+    /* Test the ArrayBag implementation. */
+    public static void main(String[] args) {
+
+
+
+        // Create a Scanner object for user input.
+        Scanner scan = new Scanner(System.in);
+
+        // Create an ArrayBag named bag1.
+        System.out.print("number of items in bag 1: ");
+        int numItems = scan.nextInt();
+        Bag bag1 = new LLBag();
+        scan.nextLine();    // consume the rest of the line
+
+
+        // Read in strings, add them to bag1, and print out bag1.
+        String itemStr;
+        for (int i = 0; i < numItems; i++) {
+            System.out.print("item " + i + ": ");
+            itemStr = scan.nextLine();
+            bag1.add(itemStr);
+        }
+        System.out.println("bag 1 = " + bag1);
+        System.out.println();
+
+        // Select a random item and print it.
+        Object item = bag1.grab();
+        System.out.println("grabbed " + item);
+        System.out.println();
+
+        // Iterate over the objects in bag1, printing them one per line.
+        Object[] items = bag1.toArray();
+        for (int i = 0; i < items.length; i++) {
+            System.out.println(items[i]);
+        }
+        System.out.println();
+
+        // Get an item to remove from bag1, remove it, and reprint the bag.
+        System.out.print("item to remove: ");
+        itemStr = scan.nextLine();
+        if (bag1.contains(itemStr)) {
+            bag1.remove(itemStr);
+        }
+        System.out.println("bag 1 = " + bag1);
+        System.out.println();
+
+
+
+    }
+}
+
+					Number 7
+
+
+/*
+ * Problem7.java
+ * 
+ * Computer Science 112, Boston Univerity
+ */
+
+import java.util.Arrays;
+
+public class Problem7 {
+    /*
+     * getAllOdds (ArrayList version) - takes the ArrayList vals (which is 
+     * assumed to contain only integers) and creates and returns a new 
+     * ArrayList containing all of the odd integers in vals.
+     */
+    public static ArrayList getAllOdds(ArrayList vals) {
+
+        ArrayList copy = new ArrayList(vals.length());
+        for (int i=0; i < vals.length(); i++){
+            int val = (Integer)vals.getItem(i);
+            if (val % 2 == 1){
+                copy.addItem(val, copy.length());
+            }
+        }
+    return copy;
+    }
+    
+    /*
+     * getAllOdds (LLList version) - takes the LLList vals (which is 
+     * assumed to contain only integers) and creates and returns a new 
+     * LLList containing all of the odd integers in vals.
+     */
+    public static LLList getAllOdds(LLList vals) {
+        LLList copy = new LLList();
+        for (int i=0; i < vals.length(); i++){
+            int val = (Integer)vals.getItem(i);
+            if (val % 2 == 1){
+                copy.addItem(val, copy.length());
+            }
+        }
+        return copy;
+    }
+    
+    public static void main(String[] args) {
+        Integer[] vals = {2, 5, 14, 6, 5, 8, 3};  
+        ArrayList list1 = new ArrayList(vals);
+        ArrayList odds1 = Problem7.getAllOdds(list1);
+        System.out.println(odds1);
+        
+        LLList list2 = new LLList(vals);
+        LLList odds2 = Problem7.getAllOdds(list2);
+        System.out.println(odds2);
+        
+        /* We encourage you to add additional test code below. */
+    }
+}

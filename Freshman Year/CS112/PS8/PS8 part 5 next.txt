@@ -1,0 +1,30 @@
+ public int next() {
+            if (nextNode == null) {
+                throw new NoSuchElementException();
+            }
+
+            // Store a copy of the key to be returned.
+            int key = nextNode.key;
+            Node parent = nextNode.parent;
+            Node child = nextNode;
+            if (parent == null) {
+                nextNode = null;
+                //
+            } else if (parent.left == child && parent.right != null) {
+                nextNode = parent.right;
+                while (nextNode.left != null || nextNode.right != null) {
+                    if (nextNode.left != null) {
+                        nextNode = nextNode.left;
+                    } else {
+                        nextNode = nextNode.right;
+                    }
+                }
+
+            } else {
+                nextNode = parent;
+            }
+            return key;
+
+
+
+        }

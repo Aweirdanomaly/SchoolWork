@@ -1,0 +1,15 @@
+#
+# ps5pr6.txt (Problem Set 5, Problem 6)
+#
+# Squaring and counting
+#
+
+00   read r1          # get # from user and store it in r1
+01   mul r3 r1 r1     # assign r1^2 to r3
+02   copy r2 r3       # copy the value of r3 to r2
+03   sub r4 r3 r2     # subtract r3 and r2 and store it in r4
+04   write r4         # print the value of r4
+05   jeqz r2 08       # if r2 == 0, jump to line 08
+06   addn r2 -1       # add -1 to r2
+07   jumpn 03         # jump to line 03
+08   halt             # halt the program

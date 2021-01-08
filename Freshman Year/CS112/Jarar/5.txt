@@ -1,0 +1,33 @@
+	Number 5
+
+					ArrayList Version
+
+void reverse(){
+        int first = 0;
+        int last = this.length-1;
+        Object hold = null;
+        while (first < last){
+            hold = this.items[first];
+            this.items[first] = this.items[last];
+            this.items[last] = hold;
+            first+=1;
+            last-=1;
+        }
+
+					LLList Version
+
+void reverse(){
+        Node current = this.head.next;
+        Node forward = null;
+        Node back = null;
+        while (current != null){
+
+            forward = current;
+            current = current.next;
+
+            forward.next = back;
+            back = forward;
+            head.next = forward;
+
+
+        }

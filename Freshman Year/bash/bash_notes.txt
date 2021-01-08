@@ -1,0 +1,167 @@
+					Bash commands and such
+ http://goo.gl/rr9aPB <----- transcript here
+
+
+
+
+
+			Vim
+ 		(txt file editing boi)
+		(sudo apt-get install vim)
+
+esc- exits insert mode (command mode)
+
+save- :w
+
+save and quit - :wq
+
+quit(NO SAVE)- q!
+
+wanna move to next word? end - w beggining - b startline - 0 endline - $ lastline G - G
+
+(yes, arrows work too)
+
+:set number - shows line numbers
+:syntax on  - syntax highlighting???
+:set tabstop=2 - set tab spacing
+:set autoindent - makes every line indented
+
+you can save a file titled '.vimrc' and changes will be applied (home/~/.vimrc)
+:echo $MYVIRMRC -checks which .vimrc you're using
+V- selects whteverv you want
+y - copy
+P - paste
+
+Delete all code in Vim with gg then dG
+
+
+
+	<A = insert mode>(pen mode)
+
+
+#!/bin/bash (tell which interpreter to use)
+
+# - Insert comments here
+
+echo = print
+
+./filename - executes vim file
+
+ To make files executable <chmod 755 filename>
+	 Execute with ./filename
+	 The numbers after chmod define who can do what with the file
+	 The numbers represent the Owner, the Group and Everyone else
+		 7 : Read, Write & Execute
+		 6 : Read & Write
+		 5 : Read & Execute
+		 4 : Read Only
+		 3 : Write & Execute
+		 2 : Write Only
+		 1 : Execute Only
+		 0 : None
+
+
+
+
+
+
+			Variables
+
+We define variables like this myName="Derek"
+ 
+The variable name starts with a letter or _ and then can also contain numbers
+	
+The shell treats all variables as strings
+	
+When declaring a variable you can't have spaces on either side of the =
+
+#!/bin/bash
+# Declare a constant -  declare -r NUM1=5 
+num2=4
+	
+	# Use arithmetic expansion for adding
+	num3=$((NUM1+num2))
+	num4=$((NUM1-num2))
+	num5=$((NUM1*num2))
+	num6=$((NUM1/num2))
+	
+	# Place variables in strings with $
+	echo "5 + 4 = $num3"
+	echo "5 - 4 = $num4"
+	echo "5 * 4 = $num5"
+	echo "5 / 4 = $num6"
+	echo $(( 5**2 ))
+	echo $(( 5%4 ))
+	
+	# Assignment operators allow for shorthand arithmetic 
+	# +=, -=, *=, /=
+	rand=5
+	let rand+=4
+	echo "$rand"                               
+                                 9 
+	
+	# Shorthand increment and decrement
+	echo "rand++ = $(( rand++ ))"   <print then add>
+	echo "++rand = $(( ++rand ))"   <add then print>
+	echo "rand-- = $(( rand-- ))"	<yardy>
+	echo "--rand = $(( --rand ))"	<yardy>
+	
+	# Use Python to add floats
+	num7=1.2
+	num8=3.4
+	num9=$(python -c "print $num7+$num8")
+	echo $num9
+	
+	# You can print over multiple lines with a Here Script
+	# cat prints a file or any string past to it
+	cat << END
+	This text
+	prints on
+	many lines
+	END
+			
+
+
+			python
+
+
+python -c 'whatever python command you want'
+
+c=`cat <<EOF
+print(122)
+EOF`
+python -c "$c"         to use both ' and " in python
+
+
+
+
+			Function example
+
+getSum() {
+ 	
+ 	# Attributes are retrieved by referring to $1, $2, etc.
+ 	local num3=$1
+ 	local num4=$2
+ 		
+ 	# Sum values
+ 	local sum=$((num3+num4))
+ 		
+ 	# Pass values back with echo
+ 	echo $sum
+ 	}
+ 	
+ 	num1=5
+ 	num2=6
+ 	
+ 	# You pass atributes by separating them with a space
+ 	# Surround function call with $() to get the return value
+ 	sum=$(getSum num1 num2)
+ 	echo "The sum is $sum"
+
+
+
+
+
+
+
+			If bois

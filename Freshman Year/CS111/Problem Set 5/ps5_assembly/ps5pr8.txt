@@ -1,0 +1,30 @@
+#
+# ps5pr8.txt (Problem Set 5, Problem 8)
+#
+# Using a function and a loop to determine if a number is prime
+#
+
+00   read r1           # get first number from user and store it in r1
+01   call r14 11       # call function in line 11 and return to 02 when done
+02   write r13         # write down r13
+03   sub r7 r13 r1     # subtract r13 and r1 and store the result in r7
+04   jnezn r7 08       # if r7 != 0, jump to line 08
+05   addn r7 1         # add r7 and 1
+06   write r7          # write down r7
+07   halt
+08   setn r7 0         # set r7 equal to 0
+09   write r7          # write down r7
+10   halt
+11   setn r13 2        # set r13 equal to 2
+12   div r10 r1 r13    # divide r1 by r13 and store it in r10
+13   sub r9 r13 r10    # subtract r13 and r10 and store it in r9
+14   jeqzn r9 20       # if r9 == 0, jump to line 20
+15   mod r12 r1 r13    # store r1 mod 13 in r12
+16   jeqzn r12 23      # if r12 == 0, jump to line 23
+17   addn r13 1        # add 1 to r13
+18   jumpn 13          # jump back to line 13
+19   nop
+20   copy r13 r1       # copy r1 into r13
+21   jumpr r14         # jump back to the r14 adress
+22   nop
+23   jumpr r14         # jump back to the r14 adress
